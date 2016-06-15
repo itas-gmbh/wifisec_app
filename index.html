@@ -33,7 +33,7 @@ link = "http://" + server + "/wifisec/login.php";
 
 function ChangeToList() {
 alert("jumped to function");
-if( $.cookie("wifisec") == "undefined" || $.cookie("wifisec") == "" ) {alert("no cookie set yet"); return 0;} else {
+if( $.cookie("wifisec") == "undefined" ) {alert("no cookie set yet"); return 0;} else {
 alert($.cookie('wifisec'));
 link = "http://" + $.cookie("wifisec") + "/wifisec/list.php";
 alert(link);
