@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>WifiSec Passwort</title>
+
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="./jquery_cookie/src/jquery.cookie.js"></script>
+<script type = "text/javascript">
+function check() {
+
+server = document.myform.server.value;
+pw = document.myform.pw.value;
+
+link = "http://" + server + "/wifisec/login.php";
+
+	//alert(link);
+
+	$.ajax({
+	type: "GET",
+	  url: link,
+	data: "pw=" + pw + "&server=" + server,  
+	success: function(data) {	
+    //alert( $.cookie("wifisec") );
+    if(data=="false") {alert("falsches PW");}
+    if(data=="true") {ChangeToList();}
+	},
+    error: function(xhr, textStatus, errorThrown) {
+    alert("keine Verbindung zum Server");
+    }
+});
+}
+
+function ChangeToList() {
+//alert("jumped to function");
+if( $.cookie("wifisec") == "" ) {alert("no cookie set yet"); return 0;} else {
+//alert($.cookie('wifisec'));
+link = "http://" + $.cookie("wifisec") + "/wifisec/list.php";
+//alert(link);
+	$.ajax({
+	type: "GET",
+	  url: link,
+	data: "pw=nothing",  
+	success: function(data) {
+	//alert(data);	
+    	$('#login').hide();
+	$('#logout').show();
+	$('#result').show();
+	$('#result').html(data);
+	
+	},
+    error: function(xhr, textStatus, errorThrown) {
+    alert("keine Verbindung zum Server");
+    logout();
+    }
+
+	
+});
+}
+}
+
+function logout() {
+    //$.removeCookie('wifisec');
+    
+    document.cookie = 'wifisec' + '=;expires:Thu, 01 Jan 1970 00:00:01 GMT;';
+    location.reload(true);
+    
+}
+
+</script>
+
+</head>
+
+<body onload="javascript:ChangeToList()">
+<div id="login">
+Passwort eingeben
+ <form name="myform" action="">
+         Enter Server: <input type="text" name="server"/><br>
+	Enter Password: <input type="text" name="pw"/><br>
+         <input type="button" value="Go" onclick="check();"/>
+      </form>
+</div>
+<div id="result"></div>
+<div id="logout"><a href="javascript:logout()">logout</a></div>
+</body>
+
+</html>
