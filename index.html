@@ -13,7 +13,7 @@ pw = document.myform.pw.value;
 
 link = "http://" + server + "/wifisec/login.php";
 
-	//alert(link);
+	alert(link);
 
 	$.ajax({
 	type: "GET",
@@ -31,17 +31,17 @@ link = "http://" + server + "/wifisec/login.php";
 }
 
 function ChangeToList() {
-//alert("jumped to function");
+alert("jumped to function");
 if( $.cookie("wifisec") == "" ) {alert("no cookie set yet"); return 0;} else {
-//alert($.cookie('wifisec'));
+alert($.cookie('wifisec'));
 link = "http://" + $.cookie("wifisec") + "/wifisec/list.php";
-//alert(link);
+alert(link);
 	$.ajax({
 	type: "GET",
 	  url: link,
 	data: "pw=nothing",  
 	success: function(data) {
-	//alert(data);	
+	alert(data);	
     	$('#login').hide();
 	$('#logout').show();
 	$('#result').show();
