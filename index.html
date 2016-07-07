@@ -3,9 +3,8 @@
 <title>WifiSec Passwort</title>
 
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script src="cordova.js" type="text/javascript" charset="utf-8"></script>
-<script src="jquery.min.js"></script>
-<script src="jquery.cookie.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="./jquery_cookie/src/jquery.cookie.js"></script>
 <script type = "text/javascript">
 function check() {
 
@@ -14,7 +13,7 @@ pw = document.myform.pw.value;
 
 link = "http://" + server + "/wifisec/login.php";
 
-	alert(link);
+	//alert(link);
 
 	$.ajax({
 	type: "GET",
@@ -32,17 +31,17 @@ link = "http://" + server + "/wifisec/login.php";
 }
 
 function ChangeToList() {
-alert("jumped to function");
-if( typeof($.cookie("wifisec")) == "undefined" ) {alert("no cookie set yet"); return 0;} else {
-alert($.cookie('wifisec'));
+//alert("jumped to function");
+if( $.cookie("wifisec") == "" ) {alert("no cookie set yet"); return 0;} else {
+//alert($.cookie('wifisec'));
 link = "http://" + $.cookie("wifisec") + "/wifisec/list.php";
-alert(link);
+//alert(link);
 	$.ajax({
 	type: "GET",
 	  url: link,
 	data: "pw=nothing",  
 	success: function(data) {
-	alert(data);	
+	//alert(data);	
     	$('#login').hide();
 	$('#logout').show();
 	$('#result').show();
