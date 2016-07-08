@@ -7,6 +7,7 @@
 <script src="jquery.min.js"></script>
 <script src="jquery.cookie.js"></script>
 <script type = "text/javascript">
+var cookie = null;
 
 function printvoucher(id) {
 alert("printed " + id);
@@ -19,7 +20,7 @@ alert(user);
 alert(valid);
 $.ajax({
     type: 'GET',
-    url: 'addentry.php',
+    url: 'http://' + cookie + '/wifisec/addentry.php',
     data: "user=" + user + "&valid=" + valid,
     success: function(data){
 	alert("Benutzer " + user + " mit Passwort " + data);
@@ -34,7 +35,7 @@ var r = confirm("Diesen Eintrag lÃ¶schen?");
 if (r == true) {
 $.ajax({
     type: 'GET',
-    url: 'delentry.php',
+    url: 'http://' + cookie + '/wifisec/delentry.php',
     data: "id=" + id,
     success: function(data){
 	//alert("deleted finished");
@@ -84,7 +85,7 @@ link = "http://" + server + "/wifisec/login.php";
 
 function ChangeToList() {
 //alert("jumped to function");
-var cookie = window.localStorage.getItem("wifisec");
+cookie = window.localStorage.getItem("wifisec");
 alert(cookie);
 if( cookie == null ) {alert("no cookie set yet"); return 0;} else {
 //alert($.cookie('wifisec'));
