@@ -16,7 +16,10 @@
     <author href="https://build.phonegap.com" email="info@itas.cc">
         Michael Allram
     </author>
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <access origin="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-intent href="https://*/*" />
 <preference name="permissions" value="none"/>
     
     <!-- to enable individual permissions use the following examples -->
