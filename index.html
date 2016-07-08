@@ -22,9 +22,9 @@ link = "http://" + server + "/wifisec/login.php";
 	  url: link,
 	data: "pw=" + pw + "&server=" + server,  
 	success: function(data) {	
-    //alert( $.cookie("wifisec") );
+    alert( $.cookie("wifisec") );
     if(data=="false") {alert("falsches PW");}
-    if(data=="true") {ChangeToList();}
+    if(data=="true") {alert(data); ChangeToList();}
 	},
     error: function(xhr, textStatus, errorThrown) {
     alert("keine Verbindung zum Server");
