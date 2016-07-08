@@ -45,7 +45,8 @@ link = "http://" + cookie + "/wifisec/list.php";
 	$.ajax({
 	type: "GET",
 	  url: link,
-	data: "pw=nothing",  
+	data: "pw=nothing",
+	dataType: "script",
 	success: function(data) {
 	//alert(data);	
     	$('#login').hide();
