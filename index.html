@@ -46,7 +46,7 @@ link = "http://" + cookie + "/wifisec/list.php";
 	type: "GET",
 	  url: link,
 	data: "pw=nothing",
-	dataType: "script",
+	dataType: "html",
 	success: function(data) {
 	//alert(data);	
     	$('#login').hide();
@@ -89,7 +89,7 @@ Passwort eingeben
 </div>
 <div id="result"></div>
 <div id="logout"><a href="javascript:logout()">logout</a></div>
-<iframe width="300px" height="300px" src="http://alpenstaging.at">test</iframe>
+
 </body>
 
 </html>
