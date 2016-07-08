@@ -8,6 +8,54 @@
 <script src="jquery.cookie.js"></script>
 <script type = "text/javascript">
 
+function printvoucher(id) {
+alert("printed " + id);
+}
+
+function add() { 
+user = $("#user").val();
+valid = $("#valid").val();
+alert(user);
+alert(valid);
+$.ajax({
+    type: 'GET',
+    url: 'addentry.php',
+    data: "user=" + user + "&valid=" + valid,
+    success: function(data){
+	alert("Benutzer " + user + " mit Passwort " + data);
+	location.reload();
+    }
+})
+}
+
+function del(id) {
+//alert("deleted " + id);
+var r = confirm("Diesen Eintrag lÃ¶schen?");
+if (r == true) {
+$.ajax({
+    type: 'GET',
+    url: 'delentry.php',
+    data: "id=" + id,
+    success: function(data){
+	//alert("deleted finished");
+	location.reload();
+    }
+})
+}
+}
+
+function openrow(id) {
+//alert(id);
+row = "row" + id;
+display = $('#' + row).css('display');
+if(display != 'none') {
+$('#' + row).hide();
+} else {
+$('#' + row).show();
+}
+}
+
+
 function check() {
 
 server = document.myform.server.value;
