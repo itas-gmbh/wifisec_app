@@ -6,9 +6,6 @@
 <script src="jquery.min.js"></script>
 <script src="jquery.cookie.js"></script>
 <script type = "text/javascript">
-document.addEventListener('deviceready', function(){
-  alert("device is ready");
-}, false);
 
 function check() {
 
@@ -36,7 +33,7 @@ link = "http://" + server + "/wifisec/login.php";
 
 function ChangeToList() {
 //alert("jumped to function");
-if( $.cookie("wifisec") == "" ) {alert("no cookie set yet"); return 0;} else {
+if( $.cookie("wifisec") == null ) {alert("no cookie set yet"); return 0;} else {
 //alert($.cookie('wifisec'));
 link = "http://" + $.cookie("wifisec") + "/wifisec/list.php";
 //alert(link);
