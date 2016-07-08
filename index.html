@@ -22,9 +22,11 @@ link = "http://" + server + "/wifisec/login.php";
 	  url: link,
 	data: "pw=" + pw + "&server=" + server,  
 	success: function(data) {	
-    alert( $.cookie("wifisec") );
+    //alert( $.cookie("wifisec") );
     if(data=="false") {alert("falsches PW");}
-    if(data=="true") {alert(data); ChangeToList();}
+    if(data=="true") {
+    	window.localStorage.setItem("wifisec", server);
+    	ChangeToList();}
 	},
     error: function(xhr, textStatus, errorThrown) {
     alert("keine Verbindung zum Server");
@@ -34,9 +36,11 @@ link = "http://" + server + "/wifisec/login.php";
 
 function ChangeToList() {
 //alert("jumped to function");
-if( $.cookie("wifisec") == null ) {alert("no cookie set yet"); return 0;} else {
+var cookie = window.localStorage.getItem("wifisec");
+alert(cookie);
+if( cookie == null ) {alert("no cookie set yet"); return 0;} else {
 //alert($.cookie('wifisec'));
-link = "http://" + $.cookie("wifisec") + "/wifisec/list.php";
+link = "http://" + cookie + "/wifisec/list.php";
 //alert(link);
 	$.ajax({
 	type: "GET",
@@ -63,9 +67,10 @@ link = "http://" + $.cookie("wifisec") + "/wifisec/list.php";
 function logout() {
     //$.removeCookie('wifisec');
     
-    document.cookie = 'wifisec' + '=;expires:Thu, 01 Jan 1970 00:00:01 GMT;';
+   // document.cookie = 'wifisec' + '=;expires:Thu, 01 Jan 1970 00:00:01 GMT;';
+    //location.reload(true);
+    window.localStorage.removeItem("wifisec");
     location.reload(true);
-    
 }
 
 </script>
