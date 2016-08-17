@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">
+<!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">-->
 <title>ITAS WifiSec</title>
 
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -69,6 +69,7 @@ link = "http://" + server + "/wifisec/login.php";
 	$.ajax({
 	type: "GET",
 	  url: link,
+	  crossDomain: true,
 	data: "pw=" + pw + "&server=" + server,  
 	success: function(data) {	
     //alert( $.cookie("wifisec") );
@@ -105,7 +106,7 @@ link = "http://" + cookie + "/wifisec/list.php";
 	
 	},
     error: function(xhr, textStatus, errorThrown) {
-    alert("keine Verbindung zum Server");
+    alert("keine Verbindung2 zum Server");
     logout();
     }
 
@@ -129,12 +130,13 @@ function logout() {
 
 <body onload="javascript:ChangeToList()">
 <div id="login">
-Passwort eingeben
+<div id="logo"></div>
+<div id="welcome">ITAS Wifisec</div>
  <form name="myform" action="">
-         Enter Server: <input type="text" name="server"/><br>
-	Enter Password: <input type="text" name="pw"/><br>
-         <input type="button" value="Go" onclick="check();"/>
-      </form>
+    <input name="server" type="text" autofocus placeholder="Server" autocomplete="on" size="15" maxlength="50"/><br>
+	<input name="pw" type="password" autofocus placeholder="Password" autocomplete="on" size="15" maxlength="15"/><br>
+         <input type="button" value="Login" onclick="check();"/>
+  </form>
 </div>
 <div id="result"></div>
 <div id="logout"><a href="javascript:logout()">logout</a></div>

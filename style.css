@@ -2,10 +2,64 @@
 display: none;
 }
 
-#result {
-display: none;
-}
 
 .extra {
 display: none;
+}
+body {
+	background-color: grey;
+
+	background-image: url(tech-875480_1280.jpg)
+	/* [disabled]font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif; */
+; 	background-size: cover;
+}
+#result {
+	margin: auto;
+	text-align: center;
+	/* [disabled]min-width: 200px; */
+	max-width: 400px;
+	display: none;
+	padding: 30px;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,0.70);
+}
+#logout {
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: auto;
+	width: 70px;
+	background-color: white;
+	border-radius: 10px;
+	text-align: center;
+}
+
+a:link, a:visited, a:hover {
+	text-align: center;
+	/* [disabled]background-color: white; */
+	border-radius: 10px;
+	/* [disabled]width: 100px; */
+	text-decoration: none;
+	color: black;
+}
+
+
+#login form {
+}
+#login {
+	margin: auto;
+	width: 200px;
+	text-align: center;
+	padding: 30px;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,0.70);
+}
+#login form input {
+	height: 30px;
+}
+#login #welcome {
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", sans-serif;
+	font-size: 30px;
+	margin-bottom: 10px;
+
 }
